@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="2549 3767 25 25">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #ff0092;
+      }
+
+      .cls-2 {
+        fill: #fff;
+      }
+    </style>
+  </defs>
+  <g id="Groupe_42" data-name="Groupe 42" transform="translate(1989 3440)">
+    <rect id="Rectangle_36" data-name="Rectangle 36" class="cls-1" width="25" height="25" transform="translate(560 327)"/>
+    <path id="Tracé_115" data-name="Tracé 115" class="cls-2" d="M44.6,2.015H41.578v-.5A1.513,1.513,0,0,0,40.067,0H37.044a1.513,1.513,0,0,0-1.511,1.511v.5H32.511A1.513,1.513,0,0,0,31,3.526V4.533a.5.5,0,0,0,.5.5h.543l.886,10.777v0a1.5,1.5,0,0,0,1.5,1.374h8.234a1.5,1.5,0,0,0,1.5-1.374v0l.886-10.777h.543a.5.5,0,0,0,.5-.5V3.526A1.513,1.513,0,0,0,44.6,2.015Zm-8.059-.5a.5.5,0,0,1,.5-.5h3.022a.5.5,0,0,1,.5.5v.5h-4.03Zm6.633,14.218a.5.5,0,0,1-.5.456H34.438a.5.5,0,0,1-.5-.456L33.058,5.037h11ZM45.1,4.03h-13.1v-.5a.5.5,0,0,1,.5-.5H44.6a.5.5,0,0,1,.5.5Z" transform="translate(533.648 331.057)"/>
+    <path id="Tracé_116" data-name="Tracé 116" class="cls-2" d="M241.5,180a.5.5,0,0,0-.5.5v7.119a.5.5,0,0,0,1.007,0V180.5A.5.5,0,0,0,241.5,180Z" transform="translate(330.7 157.101)"/>
+    <path id="Tracé_117" data-name="Tracé 117" class="cls-2" d="M331.5,180a.5.5,0,0,0-.5.5v7.119a.5.5,0,1,0,1.007,0V180.5A.5.5,0,0,0,331.5,180Z" transform="translate(243.722 157.101)"/>
+    <path id="Tracé_118" data-name="Tracé 118" class="cls-2" d="M151.5,180a.5.5,0,0,0-.5.5v7.119a.5.5,0,0,0,1.007,0V180.5A.5.5,0,0,0,151.5,180Z" transform="translate(417.678 157.101)"/>
+  </g>
+</svg>
