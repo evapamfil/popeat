@@ -7,154 +7,171 @@
         <div class="bandeau">
           <p>Notre best seller du mois</p>
         </div>
-        <div class="img">
+        <div class="img" v-on:click="addToPanier(burgerM)">
           <button class="btn">Ajouter au panier</button>
-          <img src="../assets/image/produit/popking.jpg" alt="">
+          <img v-bind:src="burgerM.picture" alt="">
         </div>
         <div class="text">
-          <p>Popking</p>
-          <p>8€</p>
+          <p>{{ burgerM.name }}</p>
+          <p>{{ burgerM.price }}€</p>
         </div>
       </div>
       <div class="container-burger">
-        <div class="product">
-          <div class="img">
+        <div class="product" v-for="burger in burgers">
+          <div class="img"  @click="addToPanier(burger)">
             <button class="btn">Ajouter au panier</button>
-            <img src="../assets/image/produit/popcheese.jpg" alt="">
+            <img v-bind:src="burger.picture" alt="">
           </div>
           <div class="text">
-            <p>Popcheese</p>
-            <p>8€</p>
-          </div>
-        </div>
-        <div class="product">
-          <div class="img">
-            <button class="btn">Ajouter au panier</button>
-            <img src="../assets/image/produit/popfish.jpg" alt="">
-          </div>
-          <div class="text">
-            <p>Popfish</p>
-            <p>8€</p>
-          </div>
-        </div>
-        <div class="product">
-          <div class="img">
-            <button class="btn">Ajouter au panier</button>
-            <img src="../assets/image/produit/popchicken.jpg" alt="">
-          </div>
-          <div class="text">
-            <p>Popchicken</p>
-            <p>8€</p>
-          </div>
-        </div>
-        <div class="product">
-          <div class="img">
-            <button class="btn">Ajouter au panier</button>
-            <img src="../assets/image/produit/popbacon.jpg" alt="">
-          </div>
-          <div class="text">
-            <p>Popbacon</p>
-            <p>8€</p>
+            <p>{{ burger.name }}</p>
+            <p>{{ burger.price }}€</p>
           </div>
         </div>
       </div>
-    </div>
-    <div class="perso-burger">
-      <h2>Personnalisez votre burger</h2>
     </div>
     <h1 class="blue">Nos boissons</h1>
     <div class="boissons">
-      <div class="product">
-        <div class="img">
+      <div class="product" v-for="boisson in boissons">
+        <div class="img" @click="addToPanier(boisson)">
           <button class="btn">Ajouter au panier</button>
-          <img src="../assets/image/produit/coca-min.jpg" alt="">
+          <img v-bind:src="boisson.picture" alt="">
         </div>
         <div class="text">
-          <p>Coca Cola </p>
-          <p>2€</p>
-        </div>
-      </div>
-      <div class="product">
-        <div class="img">
-          <button class="btn">Ajouter au panier</button>
-          <img src="../assets/image/produit/ice-tea-min.jpg" alt="">
-        </div>
-        <div class="text">
-          <p>Ice tea </p>
-          <p>2€</p>
-        </div>
-      </div>
-      <div class="product">
-        <div class="img">
-          <button class="btn">Ajouter au panier</button>
-          <img src="../assets/image/produit/fanta-min.jpg" alt="">
-        </div>
-        <div class="text">
-          <p>Fanta </p>
-          <p>2€</p>
-        </div>
-      </div>
-      <div class="product">
-        <div class="img">
-          <button class="btn">Ajouter au panier</button>
-          <img src="../assets/image/produit/evian-min.jpg" alt="">
-        </div>
-        <div class="text">
-          <p>Evian </p>
-          <p>2€</p>
+          <p>{{ boisson.name }} </p>
+          <p>{{ boisson.price }}€</p>
         </div>
       </div>
     </div>
-    <h1 class="blue">Nos desserts</h1>
+    <h1>Nos desserts</h1>
     <div class="desserts">
-      <div class="product">
+      <div class="product" v-for="dessert in desserts">
         <div class="img">
-          <button class="btn">Ajouter au panier</button>
-          <img src="../assets/image/produit/pancakes-min.jpg" alt="">
+          <button class="btn" v-on:click="addToPanier(dessert)">Ajouter au panier</button>
+          <img v-bind:src="dessert.picture" alt="">
         </div>
         <div class="text">
-          <p>Pancakes</p>
-          <p>2€</p>
-        </div>
-      </div>
-      <div class="product">
-        <div class="img">
-          <button class="btn">Ajouter au panier</button>
-          <img src="../assets/image/produit/cookie-min.jpg" alt="">
-        </div>
-        <div class="text">
-          <p>Cookies</p>
-          <p>2€</p>
-        </div>
-      </div>
-      <div class="product">
-        <div class="img">
-          <button class="btn">Ajouter au panier</button>
-          <img src="../assets/image/produit/creme-brulee-min.jpg" alt="">
-        </div>
-        <div class="text">
-          <p>Crème brulée</p>
-          <p>2€</p>
-        </div>
-      </div>
-      <div class="product">
-        <div class="img">
-          <button class="btn">Ajouter au panier</button>
-          <img src="../assets/image/produit/salade-fruit-min.jpg" alt="">
-        </div>
-        <div class="text">
-          <p>Salade de fruit</p>
-          <p>2€</p>
+          <p>{{dessert.name}}</p>
+          <p>{{ dessert.price}}€</p>
         </div>
       </div>
     </div>
+    <div class="overlay" v-if="showPopup == true" @click="closePopup"></div>
+    <div class="popup" v-if="showPopup == true">
+      <p class="title-popup">Votre produit a été ajouté au panier</p>
+      <div>
+        <button class="btn" @click="closePopup">Continuer votre commande</button>
+        <button class="btn" @click="seePanier">Voir votre panier</button>
+      </div>
+    </div>
+
   </section>
 </template>
 
 <script>
+  import {mapGetters, mapActions} from 'vuex'
+
   export default {
-    name: "Commander"
+    name: "Commander",
+    data() {
+      return {
+        burgerM: {
+          name: 'Popking',
+          price: 8,
+          picture: require('../assets/image/produit/popking.jpg')
+        },
+        burgers: [
+          {
+            name: 'Popcheese',
+            price: 8,
+            picture: require('../assets/image/produit/popcheese.jpg')
+          },
+          {
+            name: 'Popfish',
+            price: 8,
+            picture: require('../assets/image/produit/popfish.jpg')
+          },
+          {
+            name: 'Popchicken',
+            price: 8,
+            picture: require('../assets/image/produit/popchicken.jpg')
+          },
+          {
+            name: 'Popbacon',
+            price: 8,
+            picture: require('../assets/image/produit/popbacon.jpg')
+          },
+        ],
+        boissons: [
+          {
+            name: "Coca-cola",
+            price: 2,
+            picture: require('../assets/image/produit/coca-cola-min.jpg')
+          },
+          {
+            name: "Coca-cola zero",
+            price: 2,
+            picture: require('../assets/image/produit/coca-cola_zero-min.jpg')
+          },
+          {
+            name: "Badoit",
+            price: 2,
+            picture: require('../assets/image/produit/badoit-min.jpg')
+          },
+          {
+            name: "Evian",
+            price: 2,
+            picture: require('../assets/image/produit/evian-min.jpg')
+          }
+        ],
+        desserts: [
+          {
+            name: "Pancakes",
+            price: 4,
+            picture: require('../assets/image/produit/pancakes-min.jpg')
+          },
+          {
+            name: "Cookies",
+            price: 4,
+            picture: require('../assets/image/produit/cookie-min.jpg')
+          },
+          {
+            name: "Crème brulée",
+            price: 4,
+            picture: require('../assets/image/produit/creme-brulee-min.jpg')
+          },
+          {
+            name: "Salade de fruit",
+            price: 4,
+            picture: require('../assets/image/produit/salade-fruit-min.jpg')
+          }
+
+        ],
+        panier: [],
+        showPopup: false,
+      }
+    },
+
+    methods: {
+      ...mapActions([
+        'validatePanier'
+      ]),
+      addToPanier(elem) {
+        this.panier.push(elem)
+        console.log(this.panier)
+        this.showPopup = true;
+      },
+      closePopup() {
+        this.showPopup = false
+      },
+      seePanier() {
+        const payload = this.panier
+        this.validatePanier(payload)
+        this.$router.push('/Panier')
+      }
+    }
+
   }
+
 </script>
 
 <style lang="scss" scoped>
@@ -174,12 +191,15 @@
       flex-wrap: wrap;
     }
   }
+
   .burger-mois {
     max-width: 520px;
     position: relative;
     img {
       max-width: 470px;
       margin-left: 50px;
+      background-image: url("{{ burgerM.picture }}");
+      background-repeat: no-repeat;
     }
     .btn {
       margin-left: 25px;
@@ -197,11 +217,12 @@
       margin-top: 20px;
       z-index: 2;
       p {
-        font-weight: 500;
+        font-weight: 700;
         margin-left: 50px;
       }
     }
   }
+
   .product {
     margin-bottom: 20px;
     max-width: 200px;
@@ -211,7 +232,6 @@
       max-height: 212px;
     }
   }
-
   .text {
     font-weight: 500;
     margin: 0;
@@ -224,37 +244,45 @@
     position: relative;
     cursor: pointer;
     .btn {
-      display: none;
+      opacity: 0;
+      display: flex;
       width: 180px;
       position: absolute;
       transform: translateY(-50%) translateX(-50%);
       top: 50%;
       left: 50%;
+      transition: all 0.3s ease;
       &:hover {
         background-color: $yellow;
+        border: none;
       }
     }
     &:hover .btn {
-      display: flex;
+      opacity: 1;
+      transition: all 0.3s ease;
     }
   }
 
-  .perso-burger {
-    margin: 100px 0;
-    background-color: $yellow;
-    padding: 50px;
-  }
   h1.blue{
     margin-bottom: 80px;
   }
 
+  .boissons .text p{
+    color: $blue;
+  }
+  .desserts{
+    margin-top: 80px;
+  }
+
   .boissons, .desserts {
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
     justify-content: space-between;
     margin-bottom: 80px;
-    .product{
+    .product {
       margin-left: 0;
+      margin:10px;
     }
   }
 

@@ -1,7 +1,7 @@
 <template>
   <section class="container-body container">
     <h1>Profil</h1>
-    <form action="" method="post">
+    <form>
       <div>
         <label for="prenom">Modifier son prénom</label>
         <input type="text" name="prenom">
@@ -15,12 +15,12 @@
       <div>
         <label for="adresse">Modifier son adresse</label>
         <input type="text" name="adresse">
-        <label for="ville">Modifier son ville</label>
+        <label for="ville">Modifier sa ville</label>
         <input type="text" name="ville">
         <label for="code-postal">Modifier son code postal</label>
         <input type="text" name="code-postal">
         <button class="btn">Valider</button>
-        <router-link to="/">Déconnexion</router-link>
+        <a @click="deconnexion"> Déconnexion</a>
       </div>
     </form>
   </section>
@@ -29,7 +29,31 @@
 
 <script>
     export default {
-        name: "Profil"
+        name: "Profil",
+      data(){
+          return{
+            firstname : '',
+            lastname : '',
+            mail : '',
+            password : '',
+            adresse : '',
+            ville : '',
+            code_postal : '',
+          }
+
+      },
+      methods:{
+          deconnexion(){
+            this.$http.get('http://localhost:3000/users/deconnexion')
+              .then((response) => {
+                console.log(response)
+
+              })
+              .catch((error) => {
+                console.log(error)
+              })
+          }
+      }
     }
 </script>
 

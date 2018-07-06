@@ -52,7 +52,7 @@
     left: 0;
     background-color: $pink;
     height: 80px;
-    font-size: 14px;
+    font-size: 0.875em;
   }
 
   .footer {

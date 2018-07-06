@@ -6,8 +6,8 @@
         <router-link class="btn-blue" to="/Commander">Commander</router-link>
       </div>
       <div>
-        <img src="../assets/image/home/popking.jpg" alt="Popking">
-        <img src="../assets/image/home/popbacon.jpg" alt="Popbacon">
+        <img src="../assets/image/home/burger-home1-min.jpg" alt="Popking">
+        <img src="../assets/image/home/burger-home2-min.jpg" alt="Popbacon">
       </div>
     </div>
     <div class="nouveaute">

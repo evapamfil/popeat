@@ -11,6 +11,7 @@ import MentionsLegales from '@/components/MentionsLegales'
 import Inscription from '@/components/Inscription'
 import Paiement from '@/components/Paiement'
 import Suivi from '@/components/Suivi'
+import Personnalisation from '@/components/Personnalisation'
 
 Vue.use(Router)
 
@@ -31,6 +32,11 @@ export default new Router({
       path: '/Connexion',
       name: 'Connexion',
       component: Connexion
+    },
+    {
+      path: '/Personnalisation',
+      name: 'Personnalisation',
+      component: Personnalisation
     },
     {
       path: '/Qui-sommes-nous',

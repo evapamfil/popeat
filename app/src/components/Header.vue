@@ -71,11 +71,12 @@
       text-decoration: none;
       color: $pink;
       &:after {
+        margin-top: -13px;
         content: '';
         display: block;
         width: 0;
-        height: 2px;
-        background: $pink;
+        height: 16px;
+        background: $yellow;
         transition: width .3s;
       }
       &:hover::after {
@@ -104,12 +105,14 @@
         position: absolute;
         bottom: 0;
         left: 0;
+        margin-top: -13px;
         content: '';
         display: block;
         width: 0;
-        height: 2px;
-        background: $pink;
+        height: 16px;
+        background: $yellow;
         transition: width .3s;
+        z-index: -1;
       }
       &:hover::after {
         width: 100%;

@@ -1,24 +1,53 @@
 <template>
   <section class="container container-body">
     <h1>Paiement</h1>
-    <div class="panier">
-      <ul>
-        <li>Coca
-          <div class="item">
-            <span>x1</span>
-            <span class="price">2€</span>
+    <div class="container-paiement">
+      <div class="container-left">
+        <h2>Ma commande</h2>
+        <div class="panier">
+          <ul>
+            <li>Coca
+              <div class="item">
+                <span>x1</span>
+                <span class="price">2€</span>
+              </div>
+            </li>
+          </ul>
+          <ul>
+            <li class="total">Total
+              <span class="price">2€</span>
+            </li>
+          </ul>
+        </div>
+        <button class="btn">Rajouter des produits</button>
+        <router-link to="/Paiement" class="btn">Paiement</router-link>
+      </div>
+      <div class="container-right">
+        <h2>Livraison</h2>
+        <p>Eva <span>Pamfil</span></p>
+        <p>91 boulevard rodin</p>
+        <p>92130 Issy-les-Moulineaux</p>
+
+        <div class="paiement">
+          <div class="header-paiement">
+            <img src="../assets/picto/card.svg" alt="">
+            <p>Paiement en carte</p>
           </div>
-        </li>
-        <li>Coca
-          <div class="item">
-            <span>x1</span>
-            <span class="price">2€</span>
+          <label for="">Numéro de carte</label>
+          <input type="text" name="" >
+          <div class="info-card">
+            <div>
+              <label for="">Date d'expiration</label>
+              <input type="text" name="" >
+            </div>
+        <div>
+          <label for="">Cryptogramme</label>
+          <input type="text" name="" >
+        </div>
           </div>
-        </li>
-      </ul>
+        </div>
+      </div>
     </div>
-    <button class="btn">Rajouter des produits</button>
-    <router-link to="/Paiement" class="btn">Paiement</router-link>
   </section>
 </template>
 
@@ -31,12 +60,6 @@
 <style lang="scss" scoped>
   @import "../assets/style/color.scss";
 
-  .container-body {
-    background-image: url("../assets/image/burger-yellow.png");
-    background-repeat: no-repeat;
-    background-position: right center;
-    background-size: 55%;
-  }
 
   h1 {
     margin-top: 40px;
@@ -46,7 +69,6 @@
     padding: 20px;
     border: solid 4px $yellow;
     max-width: 350px;
-    min-height: 150px;
     margin-top: 20px;
   }
 
@@ -122,5 +144,48 @@
       border: none;
       color: #fff;
     }
+  }
+  .total{
+    font-weight: bold;
+    font-size: 1.813em;
+    justify-content: flex-end;
+    align-self: flex-end;
+    .price{
+      font-size: 16px;
+      font-weight: 500;
+    }
+  }
+  .container-paiement{
+    display: flex;
+    align-items: start;
+    justify-content: space-between;
+  }
+  .paiement{
+    background-color: $yellow;
+    padding: 20px 50px;
+    p, label{
+      display: block;
+      color: $blue;
+    }
+    input{
+      width: 100%;
+    }
+  }
+  .header-paiement{
+    display: flex;
+    align-items: center;
+
+    img{
+      width: 50px;
+    }
+  }
+  .info-card{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    div{
+      flex: 1;
+    }
+
   }
 </style>

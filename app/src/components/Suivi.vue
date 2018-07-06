@@ -4,7 +4,7 @@
 
 <script>
     export default {
-        name: "Suivi"
+        name: "Suivi",
     }
 </script>
 

@@ -2,8 +2,8 @@
   <section class="container container-body">
     <h1>Panier</h1>
     <div class="panier">
-      <ul>
-        <li>Coca
+      <ul v-for="item in loadedPanier">
+        <li>{{ item.name }}
           <div class="item">
             <span>x1</span>
             <div class="up-and-down">
@@ -11,52 +11,26 @@
               <button class="down"><img src="../assets/picto/down.svg"/></button>
             </div>
             <button class="btn-delete"><img src="../assets/picto/delete.svg" alt=""></button>
-            <span class="price">2€</span>
-          </div>
-        </li>
-        <li>Coca
-          <div class="item">
-            <span>x1</span>
-            <div class="up-and-down">
-              <button class="up"><img src="../assets/picto/up.svg"/></button>
-              <button class="down"><img src="../assets/picto/down.svg"/></button>
-            </div>
-            <button class="btn-delete"><img src="../assets/picto/delete.svg" alt=""></button>
-            <span class="price">2€</span>
-          </div>
-        </li>
-        <li>Coca
-          <div class="item">
-            <span>x1</span>
-            <div class="up-and-down">
-              <button class="up"><img src="../assets/picto/up.svg"/></button>
-              <button class="down"><img src="../assets/picto/down.svg"/></button>
-            </div>
-            <button class="btn-delete"><img src="../assets/picto/delete.svg" alt=""></button>
-            <span class="price">2€</span>
-          </div>
-        </li>
-        <li>Coca
-          <div class="item">
-            <span>x1</span>
-            <div class="up-and-down">
-              <button class="up"><img src="../assets/picto/up.svg"/></button>
-              <button class="down"><img src="../assets/picto/down.svg"/></button>
-            </div>
-            <button class="btn-delete"><img src="../assets/picto/delete.svg" alt=""></button>
-            <span class="price">2€</span>
+            <span class="price">{{item.price}}€</span>
           </div>
         </li>
       </ul>
     </div>
-    <button class="btn">Rajouter des produits</button>
+    <router-link to="/Commander" class="btn">Rajouter des produits</router-link>
     <router-link to="/Paiement" class="btn">Paiement</router-link>
   </section>
 </template>
 
 <script>
+  import {mapGetters, mapActions} from 'vuex'
+
   export default {
-    name: "Panier"
+    name: "Panier",
+    computed: {
+      ...mapGetters([
+        'loadedPanier'
+      ]),
+    }
   }
 </script>
 
@@ -96,45 +70,45 @@
     font-weight: 500;
     padding: 7px 0;
 
-    .item{
+    .item {
       display: flex;
       align-items: center;
     }
 
-
-    .up-and-down{
+    .up-and-down {
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      margin:0 10px;
+      margin: 0 10px;
 
-      button{
+      button {
         display: flex;
         align-items: center;
         justify-content: center;
-        img{
+        img {
           height: 10px;
           width: auto;
         }
       }
     }
 
-    button{
+    button {
       background: none;
       border: none;
       padding: 5px;
       box-sizing: content-box;
       cursor: pointer;
-      &.btn-delete, &.btn-delete img{
+      &.btn-delete, &.btn-delete img {
         height: 30px;
       }
     }
   }
-  .price{
-    &:before{
+
+  .price {
+    &:before {
       content: "";
-     border-left: solid 2px $yellow;
+      border-left: solid 2px $yellow;
       padding-bottom: 17px;
       padding-top: 15px;
       margin: 0 10px;

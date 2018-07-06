@@ -51,10 +51,11 @@
     position: relative;
     min-height: 100%;
     font-family: 'Poppins', sans-serif;
+    font-size: 16px;
   }
   button{
     font-family: 'Poppins', sans-serif;
-    font-size: 16px;
+    font-size: 1em;
   }
   label{
     color: $pink;
@@ -66,6 +67,7 @@
     max-width: 1180px;
     margin: auto;
     padding: 0px 20px;
+    position: relative;
   }
 
   .container-body {
@@ -76,7 +78,7 @@
 
   h1 {
     color: $pink;
-    font-size: 35px;
+    font-size: 2.188em;
     font-weight: 700;
     letter-spacing: 10px;
     text-transform: uppercase;
@@ -127,7 +129,7 @@
     height: 50px;
     border: solid 1px #707070;
     padding: 10px;
-    font-size: 16px;
+    font-size: 1em;
     color: #707070;
   }
 
@@ -139,5 +141,59 @@
     /* .component-fade-leave-active avant la 2.1.8 */
   {
     opacity: 0;
+  }
+  //POPUP
+
+  .overlay{
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    background-color: #fff;
+    opacity: 0.5;
+  }
+
+  .popup{
+    position: fixed;
+    z-index: 10;
+    background-color: #fff;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    border: solid 4px $blue;
+    box-shadow: 0px 8px 20px $blue;
+    text-align: center;
+    padding: 50px;
+    .title-popup{
+      color: $blue;
+      font-size: 1.563em;
+      line-height: 1.4;
+      font-weight: 900;
+      letter-spacing: 10px;
+      text-transform: uppercase;
+    }
+    div {
+      display: flex;
+      width: 100%;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 20px;
+      .btn{
+        &:first-child{
+          background: #fff;
+          color: $blue;
+          border: solid;
+          border-color: $blue;
+          margin-bottom: 10px;      }
+        &:last-child{
+          color: $blue;
+        }
+      }
+    }
+
+    .btn:last-child{
+      color: $blue;
+    }
   }
 </style>
