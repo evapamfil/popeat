@@ -16,7 +16,7 @@ import Personnalisation from '@/components/Personnalisation'
 Vue.use(Router)
 
 export default new Router({
-  mode: 'history',
+  //mode: 'history',
   routes: [
     {
       path: '/',

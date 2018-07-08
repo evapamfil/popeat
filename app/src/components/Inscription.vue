@@ -23,6 +23,10 @@
       <router-link to="/Connexion">Déjà inscrit</router-link>
     </div>
   </form>
+  <div class="overlay" v-if="showPopup == true" @click="goToConnexion"></div>
+  <div class="popup" v-if="showPopup == true">
+    <p class="title-popup">Inscription réussie</p>
+  </div>
 </section>
 </template>
 
@@ -37,7 +41,8 @@
           adresse:'',
           password: '',
           ville: '',
-          code_postal: ''
+          code_postal: '',
+          showPopup : false,
         }
       },
       methods: {
@@ -58,8 +63,11 @@
           console.log(error)
         })
           console.log('post')
-          //this.$router.push("/Liste");
-        }
+          this.showPopup = true;
+        },
+        goToConnexion(){
+          this.$router.push('Connexion')
+        },
       }
 
     }

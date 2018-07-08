@@ -6,7 +6,7 @@
       <input type="mail" name="mail" v-model="mail">
       <label for="password">Mot de passe</label>
       <input type="password" name="password" v-model="password">
-      <button class="btn" type="submit">Connexion</button>
+      <button class="btn" type="submit" @click="goToHome">Connexion</button>
       <router-link to="/Inscription">Toujours pas inscrit ?</router-link>
     </form>
   </section>
@@ -16,24 +16,27 @@
   export default {
     name: "Connexion",
 
-    data () {
+    data() {
       return {
         mail: '',
         password: '',
       }
     },
-    methods :{
-      connexion(){
+    methods: {
+      connexion() {
         this.$http.post('http://localhost:3000/users/connexion', {
-          mail : this.mail,
-          password : this.password
+          mail: this.mail,
+          password: this.password
         })
-          .then((response) => {
-            console.log(response)
+          .then(function () {
+
           })
           .catch((error) => {
             console.log(error)
           })
+      },
+      goToHome(){
+        this.$router.push('/')
       }
     }
   }
@@ -42,24 +45,28 @@
 <style lang="scss" scoped>
   @import "../assets/style/color.scss";
 
-  .container-body{
+  .container-body {
     background-image: url("../assets/image/burger-yellow.png");
     background-repeat: no-repeat;
     background-position: right center;
     background-size: 55%;
   }
-  h1{
+
+  h1 {
     margin-top: 40px;
   }
-  form{
+
+  form {
     display: flex;
     flex-direction: column;
     align-items: start;
   }
-  .btn{
+
+  .btn {
     margin-top: 50px;
   }
-  a{
+
+  a {
     color: $pink;
   }
 

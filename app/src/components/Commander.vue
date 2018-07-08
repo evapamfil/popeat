@@ -45,8 +45,8 @@
     <h1>Nos desserts</h1>
     <div class="desserts">
       <div class="product" v-for="dessert in desserts">
-        <div class="img">
-          <button class="btn" v-on:click="addToPanier(dessert)">Ajouter au panier</button>
+        <div class="img"  v-on:click="addToPanier(dessert)">
+          <button class="btn">Ajouter au panier</button>
           <img v-bind:src="dessert.picture" alt="">
         </div>
         <div class="text">

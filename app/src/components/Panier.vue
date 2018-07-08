@@ -17,7 +17,16 @@
       </ul>
     </div>
     <router-link to="/Commander" class="btn">Rajouter des produits</router-link>
-    <router-link to="/Paiement" class="btn">Paiement</router-link>
+    <a class="btn" @click="getUser">Paiement</a>
+
+    <div class="overlay" v-if="showPopup == true" @click="closePopup"></div>
+    <div class="popup" v-if="showPopup == true">
+      <p class="title-popup">Vous devez vous connecter pour continuer votre commande</p>
+      <div>
+        <router-link to="/Inscription" class="btn">S'inscrire</router-link>
+        <router-link to="/Connexion" class="btn">Se connecter</router-link>
+      </div>
+    </div>
   </section>
 </template>
 
@@ -26,10 +35,34 @@
 
   export default {
     name: "Panier",
+    data() {
+      return {
+        showPopup: false,
+      }
+    },
     computed: {
       ...mapGetters([
         'loadedPanier'
       ]),
+    },
+    methods: {
+      getUser() {
+        this.$http.get('http://localhost:3000/users/connexion')
+          .then((response) => {
+            console.log(response)
+            if (response.data.idUser) {
+              this.$router.push('/Paiement')
+            } else {
+              this.showPopup = true;
+            }
+          })
+          .catch((error) => {
+            console.log(error)
+          })
+      },
+      closePopup() {
+        this.showPopup = false
+      },
     }
   }
 </script>
