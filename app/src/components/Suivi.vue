@@ -5,17 +5,17 @@
       <div>
         <h2>Ma commande</h2>
         <div class="panier">
-          <ul>
-            <li>Coca
+          <ul v-for="item in loadedPanier">
+            <li>{{ item.name }}
               <div class="item">
                 <span>x1</span>
-                <span class="price">2€</span>
+                <span class="price">{{ item.price }}€</span>
               </div>
             </li>
           </ul>
           <ul>
             <li class="total">Total
-              <span class="price">2€</span>
+              <span class="price">{{ totalPrice }}€</span>
             </li>
           </ul>
         </div>
@@ -27,7 +27,7 @@
       <div class="burger">
         <div class="container-burger">
           <img src="../assets/picto/aile-left.svg" alt="" class="aile aile-left">
-          <img src="../assets/picto/burger-suivi.svg" alt="" >
+          <img src="../assets/picto/burger-suivi.svg" alt="">
           <img src="../assets/picto/aile-right.svg" alt="" class="aile aile-right">
         </div>
       </div>
@@ -42,8 +42,28 @@
 </template>
 
 <script>
+  import {mapGetters, mapActions} from 'vuex'
+
   export default {
     name: "Suivi",
+    data() {
+      return {
+        totalPrice: 0,
+      }
+    },
+    computed: {
+      ...mapGetters([
+        'loadedPanier'
+      ]),
+    },
+    mounted() {
+      var panier = this.loadedPanier
+      var total = [];
+      for (var i = 0; i < panier.length; i++) {
+        total.push(panier[i].price)
+      }
+      this.totalPrice = eval(total.join('+'));
+    }
   }
 </script>
 
@@ -67,36 +87,39 @@
     animation: burger-mouve 20s linear;
     top: 0;
     left: 65%;
-    img{
+    img {
       width: 150px;
     }
-    .aile{
+    .aile {
       width: 90px;
     }
   }
-  .container-burger{
+
+  .container-burger {
     position: relative;
-    .aile{
+    .aile {
       position: absolute;
     }
-    .aile-left{
+    .aile-left {
       left: -52px;
       top: -10px;
       animation: mouve-aile-left 0.15s alternate infinite;
     }
-    .aile-right{
+    .aile-right {
       right: -63px;
       top: 67px;
       animation: mouve-aile-right 0.15s alternate infinite;
     }
 
   }
+
   .container-commande {
     margin-top: 40px;
     display: flex;
     align-items: flex-start;
     justify-content: space-between;
   }
+
   .panier {
     padding: 20px;
     border: solid 4px $yellow;
@@ -123,15 +146,24 @@
       align-items: center;
     }
   }
+
   .price {
+    position: relative;
+    width: 50px;
+    text-align: right;
+    margin-left: 10px;
     &:before {
       content: "";
       border-left: solid 2px $yellow;
-      padding-bottom: 17px;
-      padding-top: 15px;
-      margin: 0 10px;
+      border-left: solid 2px #FFED19;
+      left: 0;
+      height: 60px;
+      transform: translateY(-50%);
+      top: 50%;
+      position: absolute;
     }
   }
+
   .total {
     font-weight: bold;
     font-size: 1.813em;
@@ -171,7 +203,7 @@
       top: 30%;
       left: 10%;
     }
-    30%{
+    30% {
       top: 10%;
       left: 15%;
     }
@@ -179,7 +211,7 @@
       top: 30%;
       left: 20%;
     }
-    50%{
+    50% {
       top: 10%;
       left: 25%;
     }
@@ -187,7 +219,7 @@
       top: 0;
       left: 30%;
     }
-    70%{
+    70% {
       top: 10%;
       left: 35%;
     }
@@ -195,15 +227,15 @@
       top: 30%;
       left: 40%;
     }
-    85%{
+    85% {
       top: 10%;
       left: 45%;
     }
-    90%{
+    90% {
       top: 0;
       left: 50%;
     }
-    95%{
+    95% {
       top: 10%;
       left: 55%;
     }
@@ -213,19 +245,21 @@
     }
 
   }
+
   @keyframes mouve-aile-left {
     from {
       transform: rotate(15deg);
     }
-    to{
+    to {
       transform: rotate(-10deg);
     }
   }
+
   @keyframes mouve-aile-right {
     from {
       transform: rotate(-15deg);
     }
-    to{
+    to {
       transform: rotate(10deg);
     }
   }

@@ -46,6 +46,9 @@
       ]),
     },
     methods: {
+      supPanier(){
+        console.log(this.loadedPanier)
+      },
       getUser() {
         this.$http.get('http://localhost:3000/users/connexion')
           .then((response) => {
@@ -139,12 +142,19 @@
   }
 
   .price {
+    position: relative;
+    width: 50px;
+    text-align: right;
+    margin-left: 10px;
     &:before {
       content: "";
       border-left: solid 2px $yellow;
-      padding-bottom: 17px;
-      padding-top: 15px;
-      margin: 0 10px;
+      border-left: solid 2px #FFED19;
+      left: 0;
+      height: 60px;
+      transform: translateY(-50%);
+      top: 50%;
+      position: absolute;
     }
   }
 

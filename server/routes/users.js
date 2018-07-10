@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 var bcrypt = require('bcrypt');
 
+
 var database = require('../services/database');
 /* GET users listing. */
 router.get('/', function (req, res, next) {
@@ -56,6 +57,7 @@ router.post('/connexion', function (req, res, next) {
                         console.log('vous etes connecter')
                         user = req.session
                         user.idUser = co[0].id
+                        req.session.mail = mail
                         console.log(user)
                     }
                 });
@@ -64,6 +66,7 @@ router.post('/connexion', function (req, res, next) {
         }
     })
 })
+
 router.get('/connexion', function (req, res, next) {
     res.json(user)
 })

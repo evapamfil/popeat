@@ -7,9 +7,6 @@ var session = require('express-session');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
-var ingredientsRouter = require('./routes/ingredients');
-var recettesRouter = require('./routes/recettes');
-var productsRouter = require('./routes/products');
 var commandesRouter = require('./routes/commande');
 
 var app = express();
@@ -49,9 +46,6 @@ app.use(function (req, res, next) {
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
-app.use('/ingredients', ingredientsRouter);
-app.use('/recettes', recettesRouter);
-app.use('/products', productsRouter);
 app.use('/commandes', commandesRouter);
 
 // catch 404 and forward to error handler

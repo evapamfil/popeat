@@ -15,7 +15,7 @@
           </ul>
           <ul>
             <li class="total">Total
-              <span class="price">2€</span>
+              <span class="price">{{ totalPrice }}€</span>
             </li>
           </ul>
         </div>
@@ -32,21 +32,12 @@
             <img src="../assets/picto/card.svg" alt="">
             <p>Paiement en carte</p>
           </div>
-          <label for="">Numéro de carte</label>
-          <input type="text" name="">
-          <div class="info-card">
-            <div>
-              <label for="">Date d'expiration</label>
-              <input type="text" name="">
-            </div>
-            <div>
-              <label for="">Cryptogramme</label>
-              <input type="text" name="">
-            </div>
+          <div class="container-card">
+            <div ref="card"></div>
           </div>
         </div>
         <div class="container-btn">
-          <button class="btn-blue">Payer 10€</button>
+          <button @click="purchase" class="btn-blue">Payer {{ totalPrice }}€</button>
         </div>
       </div>
     </div>
@@ -56,11 +47,21 @@
 <script>
   import {mapGetters, mapActions} from 'vuex'
 
+  let stripe = Stripe(`pk_test_x9dXBTe3Ilph1zehzVWPO2RC`),
+    elements = stripe.elements(),
+    card = undefined;
+
+  card = elements.create('card');
+
+
   export default {
     name: "Paiement",
     data() {
       return {
         infoUser: {},
+        totalPrice: 0,
+        userMail: '',
+        userId : ''
       }
     },
     computed: {
@@ -68,16 +69,81 @@
         'loadedPanier'
       ]),
     },
-    mounted () {
+    mounted() {
+      var vue = this;
+      var panier = this.loadedPanier
+      var total = [];
+
+      card.mount(vue.$refs.card);
+
+      for (var i = 0; i < panier.length; i++) {
+        total.push(panier[i].price)
+      }
+      this.totalPrice = eval(total.join('+'));
+
       this.$http.get('http://localhost:3000/users/register')
         .then((response) => {
           this.infoUser = response.data;
-          console.log(response.data);
+          //console.log(response.data);
+        })
+        .catch((error) => {
+          console.log(error)
+        })
+
+      this.$http.get('http://localhost:3000/users/connexion')
+        .then((response) => {
+          console.log(response.data)
+          this.userId = response.data.idUser
+          this.userMail = response.data.mail
+
         })
         .catch((error) => {
           console.log(error)
         })
     },
+    methods: {
+      purchase() {
+        let self = this;
+
+        function filterInt(value) {
+          if (/^(\-|\+)?([0-9]+|Infinity)$/.test(value))
+            return Number(value);
+          return NaN;
+        }
+
+        var price = filterInt(this.totalPrice)
+
+        stripe.createToken(card).then(function (result) {
+          if (result.error) {
+            console.log(result.error)
+            self.hasCardErrors = true;
+            self.$forceUpdate(); // Forcing the DOM to update so the Stripe Element can update.
+            return;
+          } else {
+            console.log('card accepted');
+            console.log(self.loadedPanier);
+            self.$http.post('http://localhost:3000/commandes/paiement', {
+              payment: result.token,
+              amount: price,
+              panier: self.loadedPanier,
+              mailUser: self.userMail,
+              idUser: self.userId,
+            })
+              .then((response) => {
+                console.log(response)
+                if(response.data.status == 'ok'){
+                  self.$router.push('/Suivi')
+                }
+              })
+              .catch((error) => {
+                console.log(error)
+              })
+
+          }
+        });
+
+      },
+    }
   }
 
 </script>
@@ -85,11 +151,20 @@
 <style lang="scss" scoped>
   @import "../assets/style/color.scss";
 
-  .container-btn{
+  .container-card {
+    min-width: 275px;
+    margin-top: 20px;
+    background-color: #fff;
+    padding: 10px;
+    border: solid 2px #707070;
+  }
+
+  .container-btn {
     margin-top: 20px;
     margin-bottom: 50px;
     text-align: center;
   }
+
   .btn-blue {
     display: inline-block;
     background-color: #fff;
@@ -172,12 +247,19 @@
   }
 
   .price {
+    position: relative;
+    width: 50px;
+    text-align: right;
+    margin-left: 10px;
     &:before {
       content: "";
       border-left: solid 2px $yellow;
-      padding-bottom: 17px;
-      padding-top: 15px;
-      margin: 0 10px;
+      border-left: solid 2px #FFED19;
+      left: 0;
+      height: 60px;
+      transform: translateY(-50%);
+      top: 50%;
+      position: absolute;
     }
   }
 
