@@ -74,6 +74,9 @@
     min-height: 100vh;
     padding-top: 80px;
     padding-bottom: 80px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
   }
 
   h1 {
@@ -108,20 +111,6 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    -webkit-transform: perspective(1px) translateZ(0);
-    transform: perspective(1px) translateZ(0);
-    overflow: hidden;
-    -webkit-transition-duration: 0.3s;
-    transition-duration: 0.3s;
-    -webkit-transition-property: color, background-color;
-    transition-property: color, background-color;
-
-
-    &:hover {
-      background-color: #fff;
-      color: $pink;
-      border: solid 1px $pink;
-    }
 
   }
   input{
@@ -146,6 +135,7 @@
 
   .overlay{
     position: absolute;
+    z-index: 2;
     top: 0;
     right: 0;
     left: 0;
@@ -183,17 +173,57 @@
         &:first-child{
           background: #fff;
           color: $blue;
-          border: solid;
+          border: solid 1px;
           border-color: $blue;
-          margin-bottom: 10px;      }
+          margin-bottom: 10px;
+          -webkit-transform: perspective(1px) translateZ(0);
+          transform: perspective(1px) translateZ(0);
+          overflow: hidden;
+          -webkit-transition-duration: 0.3s;
+          transition-duration: 0.3s;
+          -webkit-transition-property: color, background-color;
+          transition-property: color, background-color;
+
+          &:hover {
+            background-color: $blue;
+            color: #fff;
+          }
+        }
         &:last-child{
           color: $blue;
+          &:hover{
+              border-color: $blue;
+          }
         }
       }
     }
 
     .btn:last-child{
       color: $blue;
+
+    }
+  }
+  //RESPONSIVE
+  @media all and(max-width: 800px){
+    .container-body{
+      padding-top: 50px;
+    }
+  }
+  @media all and(max-width: 600px){
+    body{
+      font-size: 14px;
+    }
+    .popup{
+      width: 90%;
+      padding: 30px;
+    }
+    .btn, input{
+      width: 100%;
+    };
+  }
+  @media all and(max-width: 400px){
+    body{
+      font-size: 12px;
     }
   }
 </style>

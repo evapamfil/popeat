@@ -20,7 +20,6 @@ router.post('/register', function (req, res, next) {
         ville: req.body.ville,
         code_postal: req.body.code_postal
     }
-    console.log(users)
 
     var pass = bcrypt.hashSync(users.password, 10);
 
@@ -58,11 +57,9 @@ router.post('/connexion', function (req, res, next) {
                         user = req.session
                         user.idUser = co[0].id
                         req.session.mail = mail
-                        console.log(user)
                     }
                 });
             }
-            console.log(co)
         }
     })
 })
@@ -73,7 +70,6 @@ router.get('/connexion', function (req, res, next) {
 
 router.get('/register', function (req, res, next) {
     database.sendQuery(`SELECT * FROM users WHERE id LIKE '${user.idUser}'`, function (err, result) {
-        console.log(result)
         if (err) {
             console.log(err)
         } else {
@@ -89,11 +85,13 @@ router.get('/deconnexion', function (req, res, next) {
                 console.log(err)
             }
             else {
+                if(user){
+                    delete user.idUser
+                }
+                res.json(user)
                 console.log('vous etes bien deconnecter')
             }
-
         })
-        console.log(req.session)
     }
 })
 

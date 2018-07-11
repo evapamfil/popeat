@@ -47,7 +47,7 @@
       },
       methods: {
         submit(){
-            this.$http.post('http://localhost:3000/users/register', {
+            this.$http.post('https://popeat.tk/users/register', {
               firstname: this.firstname,
               lastname : this.lastname,
               mail : this.mail,
@@ -62,7 +62,6 @@
         .catch((error) => {
           console.log(error)
         })
-          console.log('post')
           this.showPopup = true;
         },
         goToConnexion(){
@@ -100,6 +99,21 @@
     }
     .btn{
       margin-top: 55px;
+    }
+  }
+
+  //RESPONSIVE
+  @media all and (max-width: 890px){
+    form div:last-child {
+      margin-right: 0;
+    }
+  }
+  @media all and(max-width: 762px){
+    form{
+      flex-direction: column;
+      div{
+        width: 100%;
+      }
     }
   }
 

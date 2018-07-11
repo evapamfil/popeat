@@ -81,7 +81,7 @@
       }
       this.totalPrice = eval(total.join('+'));
 
-      this.$http.get('http://localhost:3000/users/register')
+      this.$http.get('https://popeat.tk/users/register')
         .then((response) => {
           this.infoUser = response.data;
           //console.log(response.data);
@@ -90,9 +90,8 @@
           console.log(error)
         })
 
-      this.$http.get('http://localhost:3000/users/connexion')
+      this.$http.get('https://popeat.tk/users/connexion')
         .then((response) => {
-          console.log(response.data)
           this.userId = response.data.idUser
           this.userMail = response.data.mail
 
@@ -120,9 +119,7 @@
             self.$forceUpdate(); // Forcing the DOM to update so the Stripe Element can update.
             return;
           } else {
-            console.log('card accepted');
-            console.log(self.loadedPanier);
-            self.$http.post('http://localhost:3000/commandes/paiement', {
+            self.$http.post('https://popeat.tk/commandes/paiement', {
               payment: result.token,
               amount: price,
               panier: self.loadedPanier,
@@ -130,7 +127,6 @@
               idUser: self.userId,
             })
               .then((response) => {
-                console.log(response)
                 if(response.data.status == 'ok'){
                   self.$router.push('/Suivi')
                 }
@@ -169,6 +165,7 @@
     display: inline-block;
     background-color: #fff;
     color: $blue;
+    cursor: pointer;
     text-decoration: none;
     border: solid 1px $blue;
     padding: 10px 50px;
@@ -296,8 +293,8 @@
     justify-content: space-between;
   }
 
-  .container-right {
-    margin-left: 20px;
+  .container-left {
+    margin-right: 20px;
   }
 
   .paiement {
@@ -341,6 +338,20 @@
         margin-left: 15px;
       }
     }
+  }
 
+  @media all and (max-width: 764px) {
+   .container-right{
+     margin-top: 40px;
+   }
+  }
+  @media all and (max-width: 428px){
+    .container-paiement{
+      flex-direction: column;
+      align-items: center;
+    }
+    .paiement{
+      padding: 20px;
+    }
   }
 </style>

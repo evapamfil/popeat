@@ -18,7 +18,6 @@ router.post('/paiement', function (req, res, next) {
                 customer: customer.id
             }))
         .then((response) => {
-            console.log(response)
             var userId = req.body.idUser;
             var panier = req.body.panier;
             var prix = (response.amount) / 100;

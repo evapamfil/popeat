@@ -47,6 +47,7 @@
 
   footer {
     position: absolute;
+    z-index: 3;
     right: 0;
     bottom: 0;
     left: 0;

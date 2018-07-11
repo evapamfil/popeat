@@ -9,6 +9,14 @@
       <button class="btn" type="submit" @click="goToHome">Connexion</button>
       <router-link to="/Inscription">Toujours pas inscrit ?</router-link>
     </form>
+    <div class="overlay" v-if="showPopup == true"></div>
+    <div class="popup" v-if="showPopup == true">
+      <p class="title-popup">Vous êtes déjà connecté</p>
+      <div>
+        <router-link to="/Profil" class="btn">Voir mon profil</router-link>
+        <router-link to="/" class="btn">Revenir à l'accueil</router-link>
+      </div>
+    </div>
   </section>
 </template>
 
@@ -20,11 +28,26 @@
       return {
         mail: '',
         password: '',
+        showPopup: false,
       }
+    },
+    mounted() {
+      this.$http.get('https://popeat.tk/users/register')
+        .then((response) => {
+          if (response.data == ""){
+            this.showPopup = false;
+          } else {
+            this.showPopup = true;
+          }
+
+        })
+        .catch((error) => {
+          console.log(error)
+        })
     },
     methods: {
       connexion() {
-        this.$http.post('http://localhost:3000/users/connexion', {
+        this.$http.post('https://popeat.tk/users/connexion', {
           mail: this.mail,
           password: this.password
         })
@@ -35,7 +58,7 @@
             console.log(error)
           })
       },
-      goToHome(){
+      goToHome() {
         this.$router.push('/')
       }
     }
@@ -50,6 +73,9 @@
     background-repeat: no-repeat;
     background-position: right center;
     background-size: 55%;
+  }
+  .popup .btn{
+    margin-top: inherit;
   }
 
   h1 {

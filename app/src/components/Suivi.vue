@@ -19,6 +19,10 @@
             </li>
           </ul>
         </div>
+        <div class="call">
+          <img src="../assets/picto/call-pink.svg"/>
+          <a href="tel:0102030405">Nous appeler</a>
+        </div>
       </div>
 
     </div>
@@ -84,11 +88,11 @@
   .burger {
     position: absolute;
     z-index: 1;
-    animation: burger-mouve 20s linear;
-    top: 0;
-    left: 65%;
+    animation: burger-mouve 10s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
     img {
       width: 150px;
+      animation: reduce 1s linear forwards;
+      animation-delay: 8s;
     }
     .aile {
       width: 90px;
@@ -99,16 +103,17 @@
     position: relative;
     .aile {
       position: absolute;
+
     }
     .aile-left {
       left: -52px;
       top: -10px;
-      animation: mouve-aile-left 0.15s alternate infinite;
+      animation: mouve-aile-left 0.15s alternate infinite, reduce-aile-left 1s linear 8s forwards;
     }
     .aile-right {
       right: -63px;
       top: 67px;
-      animation: mouve-aile-right 0.15s alternate infinite;
+      animation: mouve-aile-right 0.15s alternate infinite, reduce-aile-right 1s linear 8s forwards;
     }
 
   }
@@ -116,6 +121,7 @@
   .container-commande {
     margin-top: 40px;
     display: flex;
+    flex-wrap: wrap;
     align-items: flex-start;
     justify-content: space-between;
   }
@@ -190,12 +196,26 @@
     }
   }
 
+  .call {
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    img {
+      width: 25px;
+      margin-right: 15px;
+    }
+    a {
+      text-decoration: underline;
+      color: $pink;
+    }
+  }
+
   @keyframes burger-mouve {
     0% {
       top: 0;
       left: 0;
     }
-    10% {
+    15% {
       top: 10%;
       left: 5%;
     }
@@ -203,47 +223,66 @@
       top: 30%;
       left: 10%;
     }
-    30% {
+    25% {
       top: 10%;
       left: 15%;
     }
-    40% {
+    30% {
       top: 30%;
       left: 20%;
     }
-    50% {
+    35% {
       top: 10%;
       left: 25%;
     }
-    60% {
+    40% {
       top: 0;
       left: 30%;
     }
-    70% {
+    45% {
       top: 10%;
       left: 35%;
     }
-    80% {
+    50% {
       top: 30%;
       left: 40%;
     }
-    85% {
+    55% {
       top: 10%;
       left: 45%;
     }
-    90% {
+    60% {
       top: 0;
       left: 50%;
     }
-    95% {
+    65% {
       top: 10%;
       left: 55%;
     }
-    100% {
-      top: 0;
+    70% {
+      top: 30%;
+      left: 60%;
+    }
+
+    75% {
+      top: 10%;
       left: 65%;
     }
 
+    80% {
+      top: 30%;
+      left: 70%;
+    }
+
+    85% {
+      top: 10%;
+      left: 75%;
+    }
+
+    100% {
+      top: 40%;
+      left: 92.7%;
+    }
   }
 
   @keyframes mouve-aile-left {
@@ -263,5 +302,49 @@
       transform: rotate(10deg);
     }
   }
+
+  @keyframes reduce {
+    from {
+      width: 150px;
+    }
+    to {
+      width: 40px;
+    }
+  }
+
+  @keyframes reduce-aile-left {
+    from {
+      left: -52px;
+      top: -10px;
+      width: 90px;
+    }
+    to {
+      width: 20px;
+      left: -10px;
+      top: -2px;
+    }
+  }
+
+  @keyframes reduce-aile-right {
+    from {
+      right: -63px;
+      top: 67px;
+      width: 90px;
+    }
+    to {
+      width: 20px;
+      top: 18px;
+      right: -14px;
+    }
+  }
+
+  //RESPONSIVE
+
+  @media all and (max-width: 600px) {
+    .aile-left, .aile-right, .burger img, .burger .container-burger {
+      display: none;
+    }
+  }
+
 
 </style>

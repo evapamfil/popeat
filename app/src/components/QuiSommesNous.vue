@@ -35,5 +35,9 @@
   p{
     margin-top: 20px;
     max-width: 550px;
+
+    &:last-child{
+      margin-bottom: 40px;
+    }
   }
 </style>

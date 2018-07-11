@@ -47,12 +47,10 @@
     },
     methods: {
       supPanier(){
-        console.log(this.loadedPanier)
       },
       getUser() {
-        this.$http.get('http://localhost:3000/users/connexion')
+        this.$http.get('https://popeat.tk/users/connexion')
           .then((response) => {
-            console.log(response)
             if (response.data.idUser) {
               this.$router.push('/Paiement')
             } else {
@@ -90,6 +88,7 @@
     max-width: 350px;
     min-height: 150px;
     margin-top: 20px;
+    background-color: #fff;
   }
 
   ul {

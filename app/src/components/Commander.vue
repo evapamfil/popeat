@@ -18,7 +18,7 @@
       </div>
       <div class="container-burger">
         <div class="product" v-for="burger in burgers">
-          <div class="img"  @click="addToPanier(burger)">
+          <div class="img" @click="addToPanier(burger)">
             <button class="btn">Ajouter au panier</button>
             <img v-bind:src="burger.picture" alt="">
           </div>
@@ -45,7 +45,7 @@
     <h1>Nos desserts</h1>
     <div class="desserts">
       <div class="product" v-for="dessert in desserts">
-        <div class="img"  v-on:click="addToPanier(dessert)">
+        <div class="img" v-on:click="addToPanier(dessert)">
           <button class="btn">Ajouter au panier</button>
           <img v-bind:src="dessert.picture" alt="">
         </div>
@@ -157,7 +157,6 @@
       ]),
       addToPanier(elem) {
         this.panier.push(elem)
-        console.log(this.panier)
         this.showPopup = true;
       },
       closePopup() {
@@ -232,6 +231,7 @@
       max-height: 212px;
     }
   }
+
   .text {
     font-weight: 500;
     margin: 0;
@@ -263,14 +263,15 @@
     }
   }
 
-  h1.blue{
+  h1.blue {
     margin-bottom: 80px;
   }
 
-  .boissons .text p{
+  .boissons .text p {
     color: $blue;
   }
-  .desserts{
+
+  .desserts {
     margin-top: 80px;
   }
 
@@ -282,7 +283,89 @@
     margin-bottom: 80px;
     .product {
       margin-left: 0;
-      margin:10px;
+      margin: 10px;
+    }
+  }
+
+  //RESPONSIVE
+  @media all and (max-width: 1119px) {
+    .burgers {
+      flex-wrap: wrap;
+      .container-burger {
+        justify-content: space-between;
+        flex-wrap: wrap;
+        padding: 20px 45px;
+        width: 100%;
+      }
+      .product {
+        margin: 5px
+      }
+    }
+  }
+
+  @media all and (max-width: 640px) {
+    .burger-mois {
+      .bandeau {
+        width: 80%;
+      }
+      img {
+        width: 95%;
+        margin-left: 5%;
+      }
+    }
+    .burgers .container-burger {
+      padding: 0;
+    }
+  }
+
+  @media all and (max-width: 460px) {
+    .burgers .container-burger {
+      padding: 20px 45px;
+      justify-content: center;
+      .product {
+        max-width: inherit;
+        width: 100%;
+      }
+      .img {
+        width: 100%;
+      }
+      .product img {
+        width: 100%;
+        max-width: inherit;
+        max-height: inherit;
+      }
+    }
+    .boissons {
+      padding: 20px 45px;
+      justify-content: center;
+      .product {
+        max-width: inherit;
+        width: 100%;
+      }
+      .img {
+        width: 100%;
+      }
+      .product img {
+        width: 100%;
+        max-width: inherit;
+        max-height: inherit;
+      }
+    }
+    .desserts{
+      padding: 20px 45px;
+      justify-content: center;
+      .product {
+        max-width: inherit;
+        width: 100%;
+      }
+      .img {
+        width: 100%;
+      }
+      .product img {
+        width: 100%;
+        max-width: inherit;
+        max-height: inherit;
+      }
     }
   }
 

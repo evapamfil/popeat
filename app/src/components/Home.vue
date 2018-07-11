@@ -37,6 +37,7 @@
 
   .header-home {
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
     margin-top: 60px;
 
@@ -97,6 +98,7 @@
 
   .container-nouveaute {
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
     align-items: start;
     div:first-child {
@@ -116,6 +118,57 @@
     }
     .btn{
       margin-top: 30px;
+    }
+  }
+  @media all and (max-width: 1098px){
+    .header-home{
+      .btn-blue{
+        margin-bottom: 20px;
+      }
+    }
+  }
+  @media all and (max-width: 994px){
+    .container-nouveaute img {
+      max-width: 350px;
+      margin-top: 40px;
+    }
+  }
+  @media all and(max-width: 600px){
+    .header-home div:last-child {
+      max-width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      img{
+        width: 45%;
+      }
+    }
+    .container-nouveaute{
+      flex-direction: column;
+      align-items: center;
+      .btn{
+        width: 100%;
+      }
+    }
+  }
+  @media all and (max-width: 540px){
+    .header-home{
+      h1{
+        font-size: 2em;
+      }
+    }
+    .container-nouveaute img {
+      max-width: 100%;
+      margin-top: 40px;
+    }
+    .nouveaute{
+      padding: 27px 30px;
+      margin-bottom: 10px;
+    }
+  }
+  @media all and (max-width: 400px){
+    .header-home h1{
+      font-size: 1.7em;
     }
   }
 

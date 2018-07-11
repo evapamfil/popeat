@@ -1,27 +1,6 @@
 <template>
   <section class="container-body container">
     <h1>Profil</h1>
-    <!-- <form>
-       <div>
-         <label for="prenom">Modifier son prénom</label>
-         <input type="text" name="prenom">
-         <label for="nom">Modifier son nom</label>
-         <input type="text" name="nom">
-         <label for="mail">Modifier son adresse mail</label>
-         <input type="mail" name="mail">
-         <label for="password">Modifier son mot de passe</label>
-         <input type="password" name="password">
-       </div>
-       <div>
-         <label for="adresse">Modifier son adresse</label>
-         <input type="text" name="adresse">
-         <label for="ville">Modifier sa ville</label>
-         <input type="text" name="ville">
-         <label for="code-postal">Modifier son code postal</label>
-         <input type="text" name="code-postal">
-         <button class="btn">Valider</button>
-       </div>
-     </form> -->
     <h2>Vos informations</h2>
     <p><span> Prénom : </span>{{ infoUser.firstname }}</p>
     <p><span> Nom : </span>{{ infoUser.lastname }}</p>
@@ -35,6 +14,14 @@
     <div class="popup" v-if="showPopup == true">
       <p class="title-popup">Vous êtes déconnecté</p>
     </div>
+    <div class="overlay" v-if="popupNonConnect == true"></div>
+    <div class="popup" v-if="popupNonConnect == true">
+      <p class="title-popup">Vous devez vous connecter pour accéder à votre profil</p>
+      <div>
+        <router-link to="/Inscription" class="btn">S'inscrire</router-link>
+        <router-link to="/Connexion" class="btn">Se connecter</router-link>
+      </div>
+    </div>
   </section>
 
 </template>
@@ -46,14 +33,22 @@
       return {
         infoUser: {},
         showPopup: false,
+        popupNonConnect: false,
       }
 
     },
     mounted() {
-      this.$http.get('http://localhost:3000/users/register')
+      this.$http.get('https://popeat.tk/users/register')
         .then((response) => {
-          this.infoUser = response.data;
-          console.log(response.data);
+          console.log(response)
+          if (response.data){
+            this.infoUser = response.data;
+            console.log(response.data);
+            this.popupNonConnect = false;
+          } else {
+            this.popupNonConnect = true;
+          }
+
         })
         .catch((error) => {
           console.log(error)
@@ -61,7 +56,7 @@
     },
     methods: {
       deconnexion() {
-        this.$http.get('http://localhost:3000/users/deconnexion')
+        this.$http.get('https://popeat.tk/users/deconnexion')
           .then((response) => {
             console.log(response)
 
@@ -102,24 +97,7 @@
   }
   .btn{
     margin-top: 20px;
+    margin-bottom: 40px;
   }
 
-    /* form{
-       display: flex;
-       justify-content: space-between;
-       align-items: safe;
-       margin-bottom: 100px;
-
-       div{
-         display: flex;
-         flex-direction: column;
-         align-items: flex-start;
-         &:last-child{
-           margin-right: 100px;
-         }
-       }
-       .btn{
-         margin-top: 55px;
-       }
-     }*/
 </style>
