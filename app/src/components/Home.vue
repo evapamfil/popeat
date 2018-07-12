@@ -16,7 +16,7 @@
       <div class="container-nouveaute">
         <div>
           <h2>Personnalisez votre burger</h2>
-          <p>Popeat vous propose de créer votre propre burger en fonction de vos envies ! Steak, poulet, poissons ou
+          <p>Popeat vous propose de créer votre propre burger en fonction de vos envies ! Steak, poulet, poisson ou
             sans viande faites ce que vous voulez. </p>
           <router-link class="btn" to="/Commander">Personnaliser votre burger</router-link>
         </div>

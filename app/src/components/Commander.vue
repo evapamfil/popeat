@@ -1,7 +1,7 @@
 <template>
   <section class="container container-body">
     <h1>Nos burgers</h1>
-    <p>Tous nos burgers son accompagnés de frites maison ! </p>
+    <p>Tous nos burgers sont accompagnés de frites maison ! </p>
     <div class="burgers">
       <div class="burger-mois">
         <div class="bandeau">
@@ -108,7 +108,7 @@
             picture: require('../assets/image/produit/coca-cola-min.jpg')
           },
           {
-            name: "Coca-cola zero",
+            name: "Coca-cola zéro",
             price: 2,
             picture: require('../assets/image/produit/coca-cola_zero-min.jpg')
           },
@@ -140,7 +140,7 @@
             picture: require('../assets/image/produit/creme-brulee-min.jpg')
           },
           {
-            name: "Salade de fruit",
+            name: "Salade de fruits",
             price: 4,
             picture: require('../assets/image/produit/salade-fruit-min.jpg')
           }

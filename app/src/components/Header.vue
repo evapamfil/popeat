@@ -1,6 +1,6 @@
 <template>
   <header>
-    <div class="overlay"></div>
+    <div class="overlay" @click="openMenu"></div>
     <div class="container header">
       <router-link to="/" class="a-logo"><img class="logo" src="./../assets/logo-popeat.svg"></router-link>
       <div class="nav-icon hide-desktop" @click="openMenu">
