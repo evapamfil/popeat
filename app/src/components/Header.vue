@@ -10,13 +10,13 @@
       <nav>
         <ul>
           <li>
+            <router-link to="/Qui-sommes-nous">Qui sommes-nous ?</router-link>
+          </li>
+          <li>
             <router-link to="/Commander">Commander</router-link>
           </li>
           <li>
             <router-link to="/Connexion" class="connect">Connexion</router-link>
-          </li>
-          <li>
-            <router-link to="/Qui-sommes-nous">Qui sommes-nous ?</router-link>
           </li>
           <li>
             <router-link to="/Profil" class="profil">Profil</router-link>
