@@ -77,6 +77,8 @@ router.get('/register', function (req, res, next) {
                 res.json(result[0])
             }
         });
+    } else {
+        console.log('pas connecté')
     }
 })
 

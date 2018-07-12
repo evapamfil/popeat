@@ -52,6 +52,7 @@
         })
         .catch((error) => {
           console.log(error)
+          this.popupNonConnect = true;
         })
     },
     methods: {
