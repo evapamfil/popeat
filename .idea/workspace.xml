@@ -6,7 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="95e235e8-578c-4543-a2bb-80756fcdee59" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/app/src/components/Profil.vue" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/components/Profil.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/routes/users.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/routes/users.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -35,8 +34,8 @@
       <file leaf-file-name="Profil.vue" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/components/Profil.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="126">
-              <caret line="47" column="38" lean-forward="true" selection-start-line="47" selection-start-column="38" selection-end-line="47" selection-end-column="38" />
+            <state relative-caret-position="222">
+              <caret line="54" column="40" lean-forward="true" selection-start-line="54" selection-start-column="40" selection-end-line="54" selection-end-column="40" />
             </state>
           </provider>
         </entry>
@@ -338,12 +337,12 @@
       <workItem from="1531159127246" duration="17531000" />
       <workItem from="1531210269978" duration="10879000" />
       <workItem from="1531293043862" duration="21792000" />
-      <workItem from="1531339268285" duration="9791000" />
+      <workItem from="1531339268285" duration="9986000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="217185000" />
+    <option name="totallyTimeSpent" value="217380000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -658,8 +657,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/components/Profil.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="126">
-          <caret line="47" column="38" lean-forward="true" selection-start-line="47" selection-start-column="38" selection-end-line="47" selection-end-column="38" />
+        <state relative-caret-position="222">
+          <caret line="54" column="40" lean-forward="true" selection-start-line="54" selection-start-column="40" selection-end-line="54" selection-end-column="40" />
         </state>
       </provider>
     </entry>

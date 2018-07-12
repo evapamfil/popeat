@@ -51,6 +51,9 @@
           else if(response.data == 'non connecté'){
             this.popupNonConnect = true;
           }
+          else if(response.status == 500){
+            this.popupNonConnect = true;
+          }
         })
         .catch((error) => {
           console.log(error)
