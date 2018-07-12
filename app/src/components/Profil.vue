@@ -45,14 +45,15 @@
             this.infoUser = response.data;
             console.log(response.data);
             this.popupNonConnect = false;
-          } else {
+          } else if (!response.data) {
             this.popupNonConnect = true;
           }
-
+          else if(response.data == 'non connecté'){
+            this.popupNonConnect = true;
+          }
         })
         .catch((error) => {
           console.log(error)
-          this.popupNonConnect = true;
         })
     },
     methods: {

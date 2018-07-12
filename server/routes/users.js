@@ -78,7 +78,7 @@ router.get('/register', function (req, res, next) {
             }
         });
     } else {
-        console.log('pas connecté')
+       res.json('non connecté')
     }
 })
 
