@@ -69,17 +69,13 @@ router.get('/connexion', function (req, res, next) {
 })
 
 router.get('/register', function (req, res, next) {
-    if(user.idUser != undefined){
-        database.sendQuery(`SELECT * FROM users WHERE id LIKE '${user.idUser}'`, function (err, result) {
-            if (err) {
-                console.log(err)
-            } else {
-                res.json(result[0])
-            }
-        });
-    } else if(user.idUser == undefined) {
-       res.json('non connecté')
-    }
+    database.sendQuery(`SELECT * FROM users WHERE id LIKE '${user.idUser}'`, function (err, result) {
+        if (err) {
+            console.log(err)
+        } else {
+            res.json(result[0])
+        }
+    });
 })
 
 router.get('/deconnexion', function (req, res, next) {

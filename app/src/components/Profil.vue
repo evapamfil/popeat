@@ -45,13 +45,7 @@
             this.infoUser = response.data;
             console.log(response.data);
             this.popupNonConnect = false;
-          } else if (!response.data) {
-            this.popupNonConnect = true;
-          }
-          else if (response.data == 'non connecté') {
-            this.popupNonConnect = true;
-          }
-          else if (response.status == 500) {
+          } else {
             this.popupNonConnect = true;
           }
         })
