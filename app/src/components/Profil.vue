@@ -41,22 +41,25 @@
       this.$http.get('https://popeat.tk/users/register')
         .then((response) => {
           console.log(response)
-          if (response.data){
+          if (response.data) {
             this.infoUser = response.data;
             console.log(response.data);
             this.popupNonConnect = false;
           } else if (!response.data) {
             this.popupNonConnect = true;
           }
-          else if(response.data == 'non connecté'){
+          else if (response.data == 'non connecté') {
             this.popupNonConnect = true;
           }
-          else if(response.status == 500){
+          else if (response.status == 500) {
             this.popupNonConnect = true;
           }
         })
         .catch((error) => {
           console.log(error)
+          if (error.status == 500) {
+            this.popupNonConnect = true;
+          }
         })
     },
     methods: {
@@ -88,19 +91,23 @@
     background-position: right center;
     background-size: 55%;
   }
+
   h1 {
     margin-top: 40px;
   }
-  h2{
+
+  h2 {
     margin-top: 20px;
   }
+
   p {
     margin: 10px 0;
     span {
       font-weight: 700;
     }
   }
-  .btn{
+
+  .btn {
     margin-top: 20px;
     margin-bottom: 40px;
   }
