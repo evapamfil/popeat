@@ -69,11 +69,10 @@ router.get('/connexion', function (req, res, next) {
 })
 
 router.get('/register', function (req, res, next) {
-    if(user.idUser){
+    if(user.idUser != undefined){
         database.sendQuery(`SELECT * FROM users WHERE id LIKE '${user.idUser}'`, function (err, result) {
             if (err) {
                 console.log(err)
-                res.json('non connecté')
             } else {
                 res.json(result[0])
             }

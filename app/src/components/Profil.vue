@@ -57,9 +57,6 @@
         })
         .catch((error) => {
           console.log(error)
-          if (error.status == 500) {
-            this.popupNonConnect = true;
-          }
         })
     },
     methods: {
